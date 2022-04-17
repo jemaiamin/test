@@ -12,7 +12,7 @@ function afficherTableau(){
         newHTML += "<td>"+etudiants[i].Email+"</td>";
         newHTML += "<td>"+etudiants[i].Moyenne+"</td>";
         newHTML += "<td><button type='button' onclick='details(`${i-1}`)'><img src='serch.png' width='30'/></button></td>";
-        newHTML += "<td><button><img src='delete.png' width='30'/></button></td>";
+        newHTML += "<td><button type='button' onclick='effacer(`${i-1}`)'><img src='delete.png' width='30'/></button></td>";
         newHTML += "</tr>";
     }
     tbody.innerHTML=newHTML;
@@ -49,7 +49,12 @@ function ajouterEtudiant(){
             ", Note 3 : " + etudiants[j].note3
         );
     }
-
+    function effacer(j){
+        etudiants.splice(j, 1);
+        afficherTableau();
+        console.log(j);
+        console.table(etudiants);
+    }
     function main(){
         init();
         afficherTableau();
